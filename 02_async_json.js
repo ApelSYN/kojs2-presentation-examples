@@ -4,7 +4,7 @@ function readJSON(filename, callback) {
     fs.readFile(filename, 'utf8', function (err, res) {
         if (err) return callback(err);
         try {
-            res = JSON.perse(res);
+            res = JSON.parse(res);
             callback(null, res);
         } catch (ex) {
             callback(ex);

@@ -5,7 +5,7 @@ function readJSON(filename) {
 		fs.readFile(filename, 'utf8', function (err, res) {
 			if (err) reject(err);
 			try {
-				res = JSON.perse(res);
+				res = JSON.parse(res);
 				resolve(res)
 			} catch (e) {
 				reject(e)
@@ -22,3 +22,9 @@ function readJSON(filename) {
 		console.log(e)
 	}
 })();
+
+//(async() => {
+//      console.log(await readJSON('my.json'))
+//})().catch (function(e) {
+//      console.log(e)
+//});

@@ -19,7 +19,7 @@ app.use(async function (ctx, next) {
   await next();
   const ms = new Date() - start;
   ctx.set('X-Response-Time', `${ms}ms`);
-  throw new Error("My error")
+  //throw new Error("My error")
 });
 
 // logger

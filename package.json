@@ -12,7 +12,7 @@
     "co": "^4.6.0",
     "koa": "^2.0.0",
     "koa-body": "*",
-    "koa-router": "*",
+    "koa-router": "^7.0.1",
     "mysql-query-promise": "^1.0.1",
     "config": "*"
   },

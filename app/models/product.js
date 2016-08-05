@@ -13,16 +13,12 @@ export default {
     create: async function ({ name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
         let result = await query(`INSERT INTO ${productTableName} SET ?`,[product]);
-        product.id = result.insertId;
-        return product;
+        return module.exports.get(result.insertId);
     },
     update: async function ( id, { name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
         let result = await query(`UPDATE ${productTableName} SET ? WHERE id=?`,[product, Number(id)]);
-        if (result.affectedRows > 0) {
-            product.id = id;
-            return product;
-        }
+        return result.affectedRows;
     },
     delete: async (id) => {
         let result = await query(`DELETE FROM ${productTableName} WHERE id=?`,[id]);

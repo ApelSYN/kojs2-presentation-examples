@@ -25,13 +25,10 @@ export default function routes(app) {
         })
         .put('/product/:id', koaBody, async (ctx, next) => {
             let result = await product.update(ctx.params.id, ctx.request.body);
-            if (result) {
-                ctx.body = result
-            } else {
-                ctx.status = 204
-            }
+            ctx.status = 204;
         })
         .delete('/product/:id', async (ctx, next) => {
+            ctx.status = 204;
             await product.delete(ctx.params.id);
         });
     app.use(router.routes());

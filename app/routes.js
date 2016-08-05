@@ -16,7 +16,7 @@ export default function routes(app) {
             if (result) {
                 ctx.body = result
             } else {
-                cts.status = 204
+                ctx.status = 204
             }
         })
         .post('/product/', koaBody, async (ctx, next) => {
@@ -28,7 +28,7 @@ export default function routes(app) {
             if (result) {
                 ctx.body = result
             } else {
-                cts.status = 204
+                ctx.status = 204
             }
         })
         .delete('/product/:id', async (ctx, next) => {

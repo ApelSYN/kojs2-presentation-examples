@@ -1,5 +1,5 @@
 import Router from 'koa-router';
-import product from 'models/product';
+import product from './models/product';
 import KoaBody from 'koa-body';
 
 const router = new Router(),

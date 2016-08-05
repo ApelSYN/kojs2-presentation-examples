@@ -4,7 +4,7 @@ module.exports = {
         version: '0.0.1'
     },
     server: {
-        port: 3000
+        port: 3001
     },
     database: {
         master: {

@@ -12,16 +12,27 @@ export default function routes(app) {
             ctx.body = await product.getAll()
         })
         .get('/product/:id', async (ctx, next) => {
-            ctx.body = await product.get(ctx.params.id)
+            let result = await product.get(ctx.params.id);
+            if (result) {
+                ctx.body = result
+            } else {
+                cts.status = 204
+            }
         })
         .post('/product/', koaBody, async (ctx, next) => {
+            ctx.status = 201;
             ctx.body = await product.create(ctx.request.body)
         })
         .put('/product/:id', koaBody, async (ctx, next) => {
-            ctx.body = await product.update(ctx.params.id, ctx.request.body)
+            let result = await product.update(ctx.params.id, ctx.request.body);
+            if (result) {
+                ctx.body = result
+            } else {
+                cts.status = 204
+            }
         })
         .delete('/product/:id', async (ctx, next) => {
-            ctx.body = await product.delete(ctx.params.id)
+            await product.delete(ctx.params.id);
         });
     app.use(router.routes());
     app.use(router.allowedMethods());

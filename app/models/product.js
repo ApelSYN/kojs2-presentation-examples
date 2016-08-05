@@ -12,13 +12,15 @@ export default {
     },
     create: async function ({ name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
-        let result = await query(`INSERT into ${productTableName} SET ?`,[]);
+        let result = await query(`INSERT into ${productTableName} SET ?`,[product]);
+        console.log(result);
         product.id = result.insertId;
         return product;
     },
     update: async function ( id, { name, price = 0, currency = 'UAH' }) {
         let product = {id: Number(id), name: String(name), price: Number(price), currency: String(currency)};
-        let result = await query(`INSERT into ${productTableName} SET ?`,[]);
+        let result = await query(`INSERT into ${productTableName} SET ?`,[product]);
+        console.log(result);
         product.id = result.insertId;
         return product;
     },

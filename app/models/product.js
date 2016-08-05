@@ -1,7 +1,7 @@
-import query from 'mysql-query-promise';
-const productTableName = 'products'
+const query = require('mysql-query-promise'),
+      productTableName = 'products';
 
-export default {
+module.exports = {
     getAll: async () => {
         return query(`SELECT * from ${productTableName}`);
     },
@@ -27,4 +27,4 @@ export default {
         console.log(result);
         return result;
     }
-}
+};

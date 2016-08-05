@@ -1,32 +1,30 @@
-class Product {
-    constructor({
-        product_id:id,
-        product_name:name,
-        price,
-        currency = 'UAH'
-    }) {
-        this.id = Number(id);
-        this.name = name;
-        this.price = Number(price) || 0;
-        this.currency = currency.toString()
-    }
-    toDB() {
-        return {
-            product_id:   this.id,
-            product_name: this.name,
-            price:        this.price,
-            currency:     this.currency
-        }
-    }
-}
+import query from 'mysql-query-promise';
+const productTableName = 'products'
 
 export default {
-    getProducts: async (productId) => {
-        // return query();
-        return [new Product({id:1}),new Product({id:2})]
+    getAll: async () => {
+        return query(`SELECT * from ${productTableName}`);
     },
-    getProduct: async (productId) => {
-        // return query();
-        return new Product({id:1})
+    get: async (id) => {
+        let products = query(`SELECT * from ${productTableName} where id=?`,[id]),
+            product = products[0];
+        return product;
+    },
+    create: async ({ name, price = 0, currency = 'UAH' }) => {
+        let product = {name: String(name), price: Number(price), currency: String(currency)};
+        let result = query(`INSERT into ${productTableName} SET ?`,[]);
+        product.id = result.insertId;
+        return product;
+    },
+    update: async ( id, { name, price = 0, currency = 'UAH' }) => {
+        let product = {id: Number(id), name: String(name), price: Number(price), currency: String(currency)};
+        let result = query(`INSERT into ${productTableName} SET ?`,[]);
+        product.id = result.insertId;
+        return product;
+    },
+    delete: async (id) => {
+        let result = query(`DELETE from ${productTableName} where id=?`,[id]);
+        console.log(result);
+        return result;
     }
 }

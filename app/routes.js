@@ -24,8 +24,8 @@ export default function routes(app) {
             ctx.body = await product.create(ctx.request.body)
         })
         .put('/product/:id', koaBody, async (ctx, next) => {
-            let result = await product.update(ctx.params.id, ctx.request.body);
             ctx.status = 204;
+            let result = await product.update(ctx.params.id, ctx.request.body);
         })
         .delete('/product/:id', async (ctx, next) => {
             ctx.status = 204;

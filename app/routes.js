@@ -1,9 +1,10 @@
 import Router from 'koa-router';
 import product from './models/product';
+import convert from 'koa-convert';
 import KoaBody from 'koa-body';
 
 const router = new Router(),
-      koaBody = KoaBody();
+      koaBody = convert(KoaBody());
 
 export default function routes(app) {
     router

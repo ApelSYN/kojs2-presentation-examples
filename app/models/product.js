@@ -1,5 +1,5 @@
 import query from 'mysql-query-promise';
-const productTableName = 'products'
+const productTableName = 'products';
 
 export default {
     getAll: async () => {

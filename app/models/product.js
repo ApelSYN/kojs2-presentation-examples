@@ -14,7 +14,8 @@ const crud = {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
         if (Number(id) > 0) product.id = id;
         let result = await query(`INSERT INTO ${productTableName} SET ? ON DUPLICATE KEY UPDATE ?`,[product,product]);
-        return crud.get(result.insertId);
+        if (result.insertId) id = result.insertId;
+        return crud.get(id);
     },
     update: async function ( id, product) {
         if (typeof product === 'object') {

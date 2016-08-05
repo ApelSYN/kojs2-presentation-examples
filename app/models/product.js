@@ -10,8 +10,8 @@ const crud = {
             product = products[0];
         return product;
     },
-    create: async function ({ name, price = 0, currency = 'UAH' }) {
-        let product = {name: String(name), price: Number(price), currency: String(currency)};
+    create: async function ({ id = null, name, price = 0, currency = 'UAH' }) {
+        let product = {id: id, name: String(name), price: Number(price), currency: String(currency)};
         let result = await query(`INSERT INTO ${productTableName} SET ?`,[product]);
         return crud.get(result.insertId);
     },

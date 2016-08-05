@@ -1,7 +1,7 @@
 import query from 'mysql-query-promise';
 const productTableName = 'products';
 
-export default {
+const crud = {
     getAll: async () => {
         return query(`SELECT * from ${productTableName}`);
     },
@@ -13,7 +13,7 @@ export default {
     create: async function ({ name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
         let result = await query(`INSERT INTO ${productTableName} SET ?`,[product]);
-        return module.exports.get(result.insertId);
+        return crud.get(result.insertId);
     },
     update: async function ( id, { name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
@@ -25,3 +25,4 @@ export default {
         return result.affectedRows;
     }
 };
+export default crud;

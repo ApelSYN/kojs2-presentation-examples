@@ -17,7 +17,7 @@ const crud = {
         if (result.insertId) id = result.insertId;
         return crud.get(id);
     },
-    update: async function ( id, product) {
+    update: async (id, product)=> {
         if (typeof product === 'object') {
             let uProduct = {};
             if (product.hasOwnProperty('name')) uProduct.name = String(product.name);

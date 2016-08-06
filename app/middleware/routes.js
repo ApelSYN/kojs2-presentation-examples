@@ -1,12 +1,11 @@
 import Router from 'koa-router';
-import product from './models/product';
+import product from '../models/product';
 import convert from 'koa-convert';
 import KoaBody from 'koa-body';
 
 const router = new Router(),
       koaBody = convert(KoaBody());
 
-export default function routes(app) {
     router
         .get('/product', async (ctx, next) => {
             ctx.body = await product.getAll()
@@ -25,12 +24,11 @@ export default function routes(app) {
         })
         .put('/product/:id', koaBody, async (ctx, next) => {
             ctx.status = 204;
-            let result = await product.update(ctx.params.id, ctx.request.body);
+            await product.update(ctx.params.id, ctx.request.body);
         })
         .delete('/product/:id', async (ctx, next) => {
             ctx.status = 204;
             await product.delete(ctx.params.id);
         });
-    app.use(router.routes());
-    app.use(router.allowedMethods());
-};
+
+export default router;

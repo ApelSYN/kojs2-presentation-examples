@@ -6,9 +6,8 @@ const crud = {
         return query(`SELECT * from ${productTableName}`);
     },
     get: async (id) => {
-        let products = await query(`SELECT * FROM ${productTableName} WHERE id=?`,[id]),
-            product = products[0];
-        return product;
+        let products = await query(`SELECT * FROM ${productTableName} WHERE id=?`,[id]);
+        return products[0];
     },
     create: async function ({ id, name, price = 0, currency = 'UAH' }) {
         let product = {name: String(name), price: Number(price), currency: String(currency)};
@@ -22,7 +21,7 @@ const crud = {
             let uProduct = {};
             if (product.hasOwnProperty('name')) uProduct.name = String(product.name);
             if (product.hasOwnProperty('price')) uProduct.price = Number(product.price);
-            if (product.hasOwnProperty('currency')) uProduct.currency = Number(product.currency);
+            if (product.hasOwnProperty('currency')) uProduct.currency = String(product.currency);
             let result = await query(`UPDATE ${productTableName} SET ? WHERE id=?`,[uProduct, Number(id)]);
             return result.affectedRows;
         }

@@ -18,7 +18,7 @@ const router = new Router(),
                 ctx.status = 204
             }
         })
-        .post('/product/', koaBody, async (ctx, next) => {
+        .post('/product', koaBody, async (ctx, next) => {
             ctx.status = 201;
             ctx.body = await product.create(ctx.request.body)
         })

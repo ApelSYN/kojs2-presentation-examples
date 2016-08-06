@@ -8,5 +8,5 @@ presentation source
 
 Article on habrahabr.ru
 =======================
-[Пишем микросервис на KoaJS 2 в стиле ES2017. Часть I: Такая разная ассинхронность](https://habrahabr.ru/post/306816/)
-[Пишем микросервис на KoaJS 2 в стиле ES2017. Часть II: Минималистичный REST](https://habrahabr.ru/post/307148/)
+  * [Пишем микросервис на KoaJS 2 в стиле ES2017. Часть I: Такая разная ассинхронность](https://habrahabr.ru/post/306816/)
+  * [Пишем микросервис на KoaJS 2 в стиле ES2017. Часть II: Минималистичный REST](https://habrahabr.ru/post/307148/)

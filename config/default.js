@@ -6,6 +6,9 @@ module.exports = {
     server: {
         port: 3001
     },
+    product: {
+        tableName: 'products'
+    },
     database: {
         master: {
             host: "localhost",

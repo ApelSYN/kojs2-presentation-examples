@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import config from  'config';
 import err from './middleware/error';
-import {routes,allowedMethods} from './middleware/routes';
+import {routes, allowedMethods} from './middleware/routes';
 
 const app = new Koa();
 

@@ -31,4 +31,6 @@ const router = new Router(),
             await product.delete(ctx.params.id);
         });
 
-export default { routes: () => router.routes(), allowedMethods: () => router.allowedMethods() }
+export function routes () { return router.routes() }
+export function allowedMethods () { return router.allowedMethods() }
+

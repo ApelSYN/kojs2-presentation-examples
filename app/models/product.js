@@ -23,7 +23,7 @@ const crud = {
             if (product.hasOwnProperty('name')) uProduct.name = String(product.name);
             if (product.hasOwnProperty('price')) uProduct.price = Number(product.price);
             if (product.hasOwnProperty('currency')) uProduct.currency = String(product.currency);
-            let result = await query(`UPDATE ${tableName} SET ? WHERE id=?`,[uProduct, Number(Number(id))]);
+            let result = await query(`UPDATE ${tableName} SET ? WHERE id=?`,[uProduct, Number(id)]);
             return result.affectedRows;
         }
     },
